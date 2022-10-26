@@ -1,9 +1,11 @@
 package handlers
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
 func HomeHandler(c *gin.Context) {
-	// a placeholder
+	c.String(http.StatusOK, "Front page") // placeholder for now
 }
