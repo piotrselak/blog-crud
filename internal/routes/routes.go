@@ -12,5 +12,6 @@ func RunRoutes() {
 
 	routes := gin.Default()
 	routes.GET("/", handlers.HomeHandler(postsCollection))
+	routes.POST("/", handlers.PostHandler(postsCollection))
 	routes.Run()
 }

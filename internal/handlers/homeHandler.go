@@ -4,12 +4,14 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/piotrselak/blog-crud/internal/repository"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func HomeHandler(client *mongo.Collection) gin.HandlerFunc {
+func HomeHandler(coll *mongo.Collection) gin.HandlerFunc {
 	handler := func(c *gin.Context) {
-		c.String(http.StatusOK, "Front page") // placeholder for now
+		result := repository.GetAllPosts(coll)
+		c.JSON(http.StatusOK, result)
 	}
 	return gin.HandlerFunc(handler)
 }
