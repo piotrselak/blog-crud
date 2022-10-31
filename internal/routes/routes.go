@@ -14,4 +14,6 @@ func RunRoutes() {
 	routes.GET("/", handlers.HomeHandler(postsCollection))
 	routes.POST("/", handlers.PostHandler(postsCollection))
 	routes.Run()
+
+	// Add disconnect here
 }

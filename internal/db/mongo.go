@@ -8,8 +8,15 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-func InitializeMongoDB() *mongo.Client {
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://localhost:27017"))
+func InitializeMongoDB(uri ...string) *mongo.Client {
+	var defaultURI string
+	if len(uri) == 0 {
+		defaultURI = "mongodb://localhost:27017"
+	} else {
+		defaultURI = uri[0]
+	}
+
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(defaultURI))
 	if err != nil {
 		panic(err)
 	}

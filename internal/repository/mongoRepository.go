@@ -26,7 +26,7 @@ func GetAllPosts(coll *mongo.Collection) []bson.M {
 
 func AddNewPost(coll *mongo.Collection, title string, text string) error {
 	if title == "" || text == "" {
-		return errors.New("Validation failed: title or text is empty")
+		return errors.New("validation failed: title or text is empty")
 	}
 
 	coll.InsertOne(context.TODO(), bson.D{{Key: "title", Value: title}, {Key: "text", Value: text}})
